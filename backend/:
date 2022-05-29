@@ -83,7 +83,7 @@ class TestimonialAdmin(admin.ModelAdmin):
     fieldsets = [
       ('Body', {'classes': ('full-width',), 'fields': ('username','first_name','last_name','user','phone','email', 'link_title', 'link', 'body','avatar')})
     ]
-    list_display = ('__str__', 'username', 'first_name', 'last_name', 'user', 'phone', 'email', 'link_title', 'link', 'body',)
+    list_display = ('__str__', 'username', 'first_name', 'last_name', 'user', 'phone', 'email', 'link_title', 'link', 'body', 'admin_thumbnail')
     admin_thumbnail = AdminThumbnail(image_field='avatar_thumbnail')
     search_fields = ('username', 'first_name', 'last_name', 'user', 'phone', 'email', 'link_title', 'link', 'body')
 
@@ -106,7 +106,7 @@ class AboutUsAdmin(admin.ModelAdmin):
     fieldsets = [
       ('Body', {'classes': ('full-width',), 'fields': ('title','subtitle','body','avatar')})
     ]
-    list_display = ('__str__','title','subtitle','body',)
+    list_display = ('__str__','title','subtitle','body','admin_thumbnail')
     admin_thumbnail = AdminThumbnail(image_field='avatar_thumbnail')
 
 

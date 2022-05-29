@@ -36,6 +36,7 @@ django-admin-autocomplete-filter
 django-rest-authtoken
 djangorestframework-filters==1.0.0.dev2
 djangorestframework==3.13.1
+django-rest-swagger
 djangorestframework-oauth
 djangorestframework-jwt
 django-filter==2.4.0

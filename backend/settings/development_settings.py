@@ -25,9 +25,13 @@ SECRET_KEY = 'django-insecure-)^-rj63rp2d9@z()vjzqmwzh+p!p=$=skl@$c+mct)qv(h+qdw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+VERIFY_SSL = False
+
+ADMIN_USERNAME='root'
+SESSION_PROTECTION = 'weak'
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0','zrealtycorp.com', 'www.zrealtycorp.com']
-
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
@@ -49,6 +53,7 @@ INSTALLED_APPS = [
     'adminsortable',
     'django_extensions',
     'encrypted_fields',
+    'imagekit',
     'redis',
     'redis_cache',
     'rest_auth',
@@ -59,7 +64,9 @@ INSTALLED_APPS = [
     'rest_framework_oauth',
     'rest_framework_extensions',
     'rest_framework_filters',
+    'rest_framework_swagger',
     'django_filters',
+    'custom.users',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +84,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -141,7 +148,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -154,6 +160,21 @@ FIELD_ENCRYPTION_KEYS = [
     "f164ec6bd6fbc4aef5647abc15199da0f9badcc1d2127bde2087ae0d794a9a0b"
 ]
 
+STATICFILES_DIRS = (
+  './static_files',
+)
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_files'),
+                    os.path.join(BASE_DIR, 'static_files/js'), 
+                    os.path.join(BASE_DIR, 'static_files/html'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static', )
-STATIC_URL = 'http://127.0.0.1/static/'
+STATIC_URL = '/static/'
 REGISTRATION_API_ACTIVATION_SUCCESS_URL = '/'
+ACTIVATION_HOST = ''
+MEDIA_ROOT = './media/'
+MEDIA_URL = '/media/'
+
